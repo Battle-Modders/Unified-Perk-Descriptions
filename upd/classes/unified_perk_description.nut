@@ -2,7 +2,7 @@ this.unified_perk_description <- {
 	m = {
 		PerkID = "",
 		Fluff = "",
-		Requirement = "",
+		Requirements = [],
 		Passives = [],
 		Actives = {},
 		OneTimeEffects = [],
@@ -13,11 +13,11 @@ this.unified_perk_description <- {
 	{
 	}
 
-	function init( _perkID, _fluff = null, _requirement = null )
+	function init( _perkID, _fluff = null, _requirements = null )
 	{
 		this.setPerkID(_perkID);
 		if (_fluff != null) this.setFluff(_fluff);
-		if (_requirement != null) this.setRequirement(_requirement);
+		if (_requirements != null) this.addRequirement(_requirements);
 		return this;
 	}
 
@@ -46,13 +46,24 @@ this.unified_perk_description <- {
 
 	function getRequirement()
 	{
-		return this.m.Requirement;
+		return this.m.Requirements;
 	}
 
-	function setRequirement( _text )
+	function addRequirement( _requirements )
 	{
-		::MSU.requireString(_text);
-		this.m.Requirement = _text;
+		::MSU.requireOneFromTypes(["string", "array"], _requirements);
+		if (typeof _requirements == "string")
+		{
+			this.m.Requirements.push(_requirements);
+		}
+		else
+		{
+			foreach (string in _requirements)
+			{
+				::MSU.requireString(string);
+			}
+			this.m.Requirements.extend(_requirements);
+		}
 	}
 
 	function addPassive( _desc )
@@ -94,7 +105,7 @@ this.unified_perk_description <- {
 	function buildDescription()
 	{
 		local perk = ::Const.Perks.findById(this.m.PerkID);
-		this.m.Description = this.m.Requirement != "" ? ::UPD.Strings.getHeader(::UPD.Strings.HeaderType.Requirement) + "[color=" + ::UPD.Strings.getHeaderColor(::UPD.Strings.HeaderType.Requirement) + "]" + this.m.Requirement + "[/color]\n" : "";
+		this.m.Description += this.buildRequirements();
 		this.m.Description += this.m.Fluff != "" ? this.m.Fluff + "\n" : "";
 
 		if (this.m.Passives.len() > 0)
@@ -140,5 +151,21 @@ this.unified_perk_description <- {
 
 		if (this.m.Footer != "") this.m.Description += "\n" + this.m.Footer;
 		else this.m.Description = this.m.Description.slice(0, -2); // remove the \n
+	}
+
+	function buildRequirements()
+	{
+		if(this.getRequirement().len() == 0) return "";
+		local isFirst = true;		// Simple solution for not having one separator too much at the start or at the end
+		local ret = ::UPD.Strings.getHeader(::UPD.Strings.HeaderType.Requirement);
+		ret += "[color=" + ::UPD.Strings.getHeaderColor(::UPD.Strings.HeaderType.Requirement) + "]";
+		foreach(requirement in this.getRequirement())
+		{
+			if(isFirst == false) ret += ::UPD.Strings.EnumSeparator;
+			ret += requirement;
+			isFirst = false;
+		}
+		ret += "[/color]\n\n";
+		return ret;
 	}
 };

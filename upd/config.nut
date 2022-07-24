@@ -24,6 +24,8 @@
 		"#000ec1"
 	],
 
+	EnumSeparator = ", ",
+
 	function getHeaderColor( _headerType )
 	{
 		return this.HeaderColor[_headerType];
@@ -36,7 +38,7 @@
 
 	function getHeader( _headerType, _heading = "" )
 	{
-		return "[color=" + this.getHeaderColor(_headerType) + "][u]" + this.getHeaderString(_headerType) + ": " + _heading + "[/u][/color]";
+		return "[color=" + this.getHeaderColor(_headerType) + "][u]" + this.getHeaderString(_headerType) + ":[/u] " + _heading + "[/color]";
 	}
 
 	function addHeaderType( _name, _string, _color )
