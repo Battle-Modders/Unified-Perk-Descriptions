@@ -139,6 +139,6 @@ this.unified_perk_description <- {
 		}
 
 		if (this.m.Footer != "") this.m.Description += "\n" + this.m.Footer;
-		else this.m.Description = this.m.Description.slice(0, -2); // remove the \n\n
+		else this.m.Description = this.m.Description.slice(0, -2); // remove the \n
 	}
 };
