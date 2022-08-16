@@ -10,7 +10,8 @@
 
 	::include("upd/load.nut");
 
-	::include("upd/testing.nut"); // Comment to disable testing.
+	// ::include("upd/testing.nut"); // Comment to disable testing.
+	::include("upd/vanilla_perk_descriptions.nut");		// Transforms the descriptions of all current vanilla perks
 
 	foreach (obj in ::UPD.PerkDescriptions.Descriptions)
 	{
