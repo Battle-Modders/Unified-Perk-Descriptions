@@ -1,4 +1,4 @@
-::UPD.setPerkDescription("perk.colossus", ::UPD.getDescription({
+::UPD.setPerkDescription("perk.colossus", "Colossus", ::UPD.getDescription({
 	Fluff = "test fluff",
 	Requirement = "test requirement",
 	Effects = [

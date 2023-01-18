@@ -1,4 +1,4 @@
-::UPD.setPerkDescription <- function( _perkID, _stringsKey, _description )
+::UPD.setDescription <- function( _perkID, _stringsKey, _description )
 {
 	::Const.Perks.findById(_perkID).Tooltip = _description;
 	if (_stringsKey in ::Const.Strings.PerkDescription) ::Const.Strings.PerkDescription[_stringsKey] = _description;
