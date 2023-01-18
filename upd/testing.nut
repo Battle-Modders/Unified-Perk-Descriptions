@@ -1,7 +1,29 @@
-local duelist = ::new(::UPD.Class.PerkDescription).init("perk.duelist", "test fluff", "test requirement");
-duelist.addPassive(["does something 1", "does something 2"]);
-duelist.addActive("scripts/skills/actives/slash", ["does something 3", "does something 4"]);
-duelist.addOneTimeEffect(["one time effect 1", "one time effect 2"]);
-duelist.addFooter("test footer");
-
-::UPD.PerkDescriptions.add(duelist);
+::UPD.setPerkDescription("perk.colossus", "Colossus", ::UPD.getDescription({
+	Fluff = "test fluff",
+	Requirement = "test requirement",
+	Effects = [
+		{
+			Type = ::UPD.EffectType.Passive,
+			Description = [
+				"Does something",
+				"Does something 2"
+			]
+		},
+		{
+			Type = ::UPD.EffectType.Active,
+			Script = "scripts/skills/actives/slash",
+			Description = [
+				"Does something 3",
+				"Does something 4"
+			]
+		},
+		{
+			Type = ::UPD.EffectType.OneTimeEffect
+			Description = [
+				"One Time effect 1",
+				"One Time effect 2"
+			]
+		}
+	],
+	Footer = "test footer"
+}));
