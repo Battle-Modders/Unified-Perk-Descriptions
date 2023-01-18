@@ -40,7 +40,7 @@
 
 			case ::UPD.EffectType.Active:
 				info.Actives.push({
-					Script = effectInfo.Script,
+					Name = "Name" in effectInfo ? effectInfo.Name : "",
 					Description = effectInfo.Description
 				})
 				break;
@@ -91,9 +91,7 @@
 		ret += "\n";
 		foreach (active in _info.Actives)
 		{
-			local skill = ::new(active.Script);
-			ret += ::UPD.Strings.getHeader(::UPD.Strings.HeaderType.Active, skill.getName()) + "\n";
-			ret += "• Costs " + skill.m.ActionPointCost + " AP and builds " + skill.m.FatigueCost + " Fatigue.\n";
+			ret += ::UPD.Strings.getHeader(::UPD.Strings.HeaderType.Active, active.Name) + "\n";
 			foreach (desc in active.Description)
 			{
 				ret += "• " + desc + "\n";
@@ -115,7 +113,7 @@
 	}
 
 	if (_info.Footer != "") ret += "\n" + _info.Footer;
-	else ret = ret.slice(0, -2); // remove the \n
+	else ret = ret.slice(0, -1); // remove the \n
 
 	return ret;
 }
