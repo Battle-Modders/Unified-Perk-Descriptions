@@ -9,5 +9,5 @@
 	::UPD.Mod <- ::MSU.Class.Mod(::UPD.ID, ::UPD.Version, ::UPD.Name);
 
 	::include("upd/config.nut");
-	::include("upd/testing.nut"); // Comment to disable testing.
+	// ::include("upd/testing.nut"); // Comment to disable testing.
 });
