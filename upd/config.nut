@@ -73,42 +73,30 @@
 
 	ret += _info.Fluff == "" ? "" : _info.Fluff + "\n";
 
-	if (_info.Passives.len() > 0)
+	foreach (passive in _info.Passives)
 	{
-		ret += "\n";
-		foreach (passive in _info.Passives)
+		ret += "\n" + ::UPD.Strings.getHeader(::UPD.Strings.HeaderType.Passive, passive.Name) + "\n";
+		foreach (desc in passive.Description)
 		{
-			ret += ::UPD.Strings.getHeader(::UPD.Strings.HeaderType.Passive, passive.Name) + "\n";
-			foreach (desc in passive.Description)
-			{
-				ret += "• " + desc + "\n";
-			}
+			ret += "• " + desc + "\n";
 		}
 	}
 
-	if (_info.Actives.len() > 0)
+	foreach (active in _info.Actives)
 	{
-		ret += "\n";
-		foreach (active in _info.Actives)
+		ret += "\n" + ::UPD.Strings.getHeader(::UPD.Strings.HeaderType.Active, active.Name) + "\n";
+		foreach (desc in active.Description)
 		{
-			ret += ::UPD.Strings.getHeader(::UPD.Strings.HeaderType.Active, active.Name) + "\n";
-			foreach (desc in active.Description)
-			{
-				ret += "• " + desc + "\n";
-			}
+			ret += "• " + desc + "\n";
 		}
 	}
 
-	if (_info.OneTimeEffects.len() > 0)
+	foreach (effect in _info.OneTimeEffects)
 	{
-		ret += "\n";
-		foreach (effect in _info.OneTimeEffects)
+		ret += "\n" + ::UPD.Strings.getHeader(::UPD.Strings.HeaderType.OneTimeEffect, effect.Name) + "\n";
+		foreach (desc in effect.Description)
 		{
-			ret += ::UPD.Strings.getHeader(::UPD.Strings.HeaderType.OneTimeEffect, effect.Name) + "\n";
-			foreach (desc in effect.Description)
-			{
-				ret += "• " + desc + "\n";
-			}
+			ret += "• " + desc + "\n";
 		}
 	}
 
