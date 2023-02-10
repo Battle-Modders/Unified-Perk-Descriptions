@@ -14,4 +14,5 @@
 
 	::include("upd/config.nut");
 	// ::include("upd/testing.nut"); // Comment to disable testing.
+	::include("upd/vanilla_perk_descriptions"); // Comment to disable refactored vanilla tooltips
 });
