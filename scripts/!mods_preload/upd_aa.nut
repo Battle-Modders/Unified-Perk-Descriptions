@@ -1,6 +1,6 @@
 ::UPD <- {
 	ID = "mod_upd",
-	Version = "0.1.0",
+	Version = "0.1.1",
 	Name = "Unified Perk Descriptions (UPD)",
 	GitHubURL = "https://github.com/Battle-Modders/Unified-Perk-Descriptions"
 };
