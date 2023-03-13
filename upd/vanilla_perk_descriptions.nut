@@ -708,7 +708,6 @@ local vanillaDescriptions = [
  				Description = [
 					"Skills build up [color=" + ::Const.UI.Color.NegativeValue + "]25%[/color] less Fatigue.",
 					"Pound ignores an additional [color=" + ::Const.UI.Color.PositiveValue + "]+10%[/color] of armor on head hits.",
-					"The Polemace no longer has a penalty for attacking targets directly adjacent.",
 					"Thresh gains [color=" + ::Const.UI.Color.PositiveValue + "]+5%[/color] chance to hit."
 				]
  			}]
