@@ -5,8 +5,9 @@
 	GitHubURL = "https://github.com/Battle-Modders/Unified-Perk-Descriptions"
 };
 
-::mods_registerMod(::UPD.ID, ::UPD.Version, ::UPD.Name);
-::mods_queue(::UPD.ID, "mod_msu", function() {
+::UPD.MH <- ::Hooks.register(::UPD.ID, ::UPD.Version, ::UPD.Name);
+::UPD.MH.require("mod_msu");
+::UPD.MH.queue(">mod_msu", function() {
 	::UPD.Mod <- ::MSU.Class.Mod(::UPD.ID, ::UPD.Version, ::UPD.Name);
 
 	::UPD.Mod.Registry.addModSource(::MSU.System.Registry.ModSourceDomain.GitHub, ::UPD.GitHubURL);
